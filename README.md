@@ -40,3 +40,6 @@ MAKE USER TO DECIDE WHAT HE WANTS, MORE HIDING = HEAVIER CODE.
 6.website will update itself with new algorithm every once in a while?
 
 
+
+https://obfuscator.io/   this exists?? but.. no open source?   - use on my hacking website to demonstrate its use.
+
