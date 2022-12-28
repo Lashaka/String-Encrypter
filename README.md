@@ -37,6 +37,6 @@ MAKE USER TO DECIDE WHAT HE WANTS, MORE HIDING = HEAVIER CODE.
 3. offer option to encrypt data inorder to make it even more secure.
 4. consider adding bugs that javascript will ignore to improve exploiter searchers confusion.
 5. option to add functions that do nothing and empty variables to add confusion
-
+6.website will update itself with new algorithm every once in a while?
 
 
