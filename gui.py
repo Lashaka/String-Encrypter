@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 import pyperclip
-from crypto_functions import encrypt, decrypt
+from crypto_functions import encrypt, decrypt, encrypt_with_key
 
 sg.theme("DarkBlue")
 
@@ -14,7 +14,6 @@ layout = [
     [sg.Text("Result:", font=("Helvetica", 14))],
     [sg.Output(key="result_output", font=("Helvetica", 14),size=(100,10))],
     [sg.Button("Copy String",button_color=("mint cream", "slate blue"), font=("Helvetica", 14)), sg.Button("Copy Key",button_color=("slate blue", "mint cream"), font=("Helvetica", 14))]
-
 ]
 
 
@@ -34,13 +33,21 @@ while True:
     key_input = values["key_input"]
     
     if event == "Encrypt":
-        if (string_input != ""):
+        if (string_input != "" and key_input==""):
             result, key = encrypt(string_input)
 
             Copy_String=result
             Copy_Key=key
 
             window["result_output"].update(f"Encrypted string:{result}\nKey:{key}")
+        elif(string_input != "" and key_input!=""):
+            result, key = encrypt_with_key(string_input,key_input)
+
+            Copy_String=result
+            Copy_Key=key
+
+            window["result_output"].update(f"Encrypted string:{result}\nKey:{key}")
+            
         else:
             sg.popup_ok('No String Entered!')
 

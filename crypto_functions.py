@@ -39,21 +39,29 @@ def DeCode_Base64(string):
 
 #Decrypt a string using a key 
 def decrypt(string, key):
-  try:
-    decrypted_string = ""
     key = DeCode_Base64(key)
     string =DeCode_Base64(string)
-    for i, char in enumerate(string):
-      decrypted_char = chr(ord(char) - int(key[i]))
+
+    string_length=len(string)
+    decrypted_string = ""
+
+    counter=0
+    for i in range(string_length):
+      decrypted_char = chr(ord(string[i]) - int(key[counter]))
       decrypted_string += decrypted_char
+
+      counter=counter+1
+      if(counter+1==len(key)):
+        counter=0
+
 
     Remove_Trash(decrypted_string)
 
     return decrypted_string
 
 #if cannot decrypt with given key return given string.
-  except:
-    return "Error"
+  #except:
+    #return "Error"
 
 #Encrypt a string in a specific method and give a decryption key
 def encrypt(string):
@@ -69,3 +77,26 @@ def encrypt(string):
 
   key =''.join(map(str,key))
   return EnCode_Base64(encrypted_string), EnCode_Base64(key)
+
+def encrypt_with_key(string,key):
+  Add_Trash(string)
+
+  key = DeCode_Base64(key)
+
+  string_length=len(string)
+
+  encrypted_string =""
+
+  counter=0
+  for i in range(string_length):
+    encrypted_char = chr(ord(string[i]) + int(key[counter]))
+    encrypted_string += encrypted_char
+
+    counter=counter+1
+    if(counter+1==len(key)):
+      counter=0
+
+    
+
+  return EnCode_Base64(encrypted_string), EnCode_Base64(key)
+
